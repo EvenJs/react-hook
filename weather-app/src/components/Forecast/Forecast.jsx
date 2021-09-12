@@ -1,7 +1,7 @@
 import React from 'react';
 import DailyBlock from '../DailyBlock/DailyBlock';
 
-function Forecast({input, timeShift, baseURL}) {
+function Forecast({ input, timeShift, baseURL }) {
   return(
     <div>
       {input.map((data) => (

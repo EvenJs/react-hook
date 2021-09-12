@@ -2,7 +2,7 @@ import React from 'react';
 
 const days =['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function DailyBlock({week, url, temperature, weather}) {
+function DailyBlock({ week, url, temperature, weather }) {
   const time = new Date(week).getDay();
 
   return (

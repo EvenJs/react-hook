@@ -5,14 +5,14 @@ const getType = (type) => ({
   wind_speed: 'Wind Speed',
   sunrise: 'Sunrise Time',
   sunset:'Sunset Time',
-})
+});
 
 const getPrefix = (type) => ({
   humidity: '%',
   wind_speed: 'kms/h',
   sunrise: '',
   sunset: '',
-}[type])
+}[type]);
 
 function WeatherDetail({ type, value }) {
   return (
@@ -21,6 +21,6 @@ function WeatherDetail({ type, value }) {
       <div>{`${value} ${getPrefix(type)}`} </div>
     </div>
   );
-}
+};
 
 export default WeatherDetail;

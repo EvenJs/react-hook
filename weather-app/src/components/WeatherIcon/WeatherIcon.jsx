@@ -6,7 +6,7 @@ function WeatherIcon({ imageUrl, weatherDescription }) {
       <img src={imageUrl} alt='weahter-icon' />
       <h3>{weatherDescription}</h3>
     </div>
-  )
-}
+  );
+};
 
 export default WeatherIcon;
