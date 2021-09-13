@@ -9,7 +9,7 @@ import css from './landingPage.module.scss';
 const baseURL= 'https://openweathermap.org/img/wn/';
 
 function LandingPage() {
-  const [location, setLocation] = useState('Sydney');
+  const [location, setLocation] = useState('Sydney'.toUpperCase());
   const [loading, setLoading] = useState(true);
   const [forecastData, setForecastData] = useState([]);
   const [currentDetail, setCurrentDetail] = useState([]);
@@ -18,7 +18,7 @@ function LandingPage() {
   const [timeShift, setTimeShitf] = useState('');
 
   const updateLocation = (text) => {
-    const newlocation = text;
+    const newlocation = text.toUpperCase();
     setLocation(newlocation);
   }
 
