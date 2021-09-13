@@ -1,0 +1,10 @@
+.current {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  .detail {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

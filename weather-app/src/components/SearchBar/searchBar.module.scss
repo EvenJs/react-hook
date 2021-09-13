@@ -1,10 +1,17 @@
 .searchbar {
   margin:2% 20%;
+  text-align: center;
   //background-color: rgba(226, 231, 236, 0.459);
   .input{
-    width: 100%;
+    width: 50%;
     background-color: rgba(226, 231, 236, 0.459);
     border: none;
-    border-radius: 4%;
+    border-radius: 20px;
+    font-size: x-large;
+    text-align: center;
+    
+  }
+  ::placeholder {
+    color:white;
   }
 }

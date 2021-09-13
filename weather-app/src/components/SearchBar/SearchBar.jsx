@@ -19,6 +19,7 @@ function SearchBar({updateLocation}) {
         type='text'
         className={css.input}
         value={value}
+        placeholder='Search City'
         onChange={(e) => setValue(e.target.value)}
       />
     </form>
