@@ -33,7 +33,6 @@ function LandingPage() {
       setCurrentIcon(rawData.current.weatheIcon);
       serCurrentWeather(rawData.current.weather);
       setTimeShitf(rawData.time.timeShift);
-      console.log('2', rawData);
     };
 
     getWeatherData(location);
