@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import css from './searchBar.module.scss';
 
 function SearchBar({updateLocation}) {
   const [value, setValue] = useState('');
@@ -14,10 +14,10 @@ function SearchBar({updateLocation}) {
 
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form className={css.searchbar} onSubmit={handleSubmit}>
       <input 
         type='text'
-        className='input'
+        className={css.input}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

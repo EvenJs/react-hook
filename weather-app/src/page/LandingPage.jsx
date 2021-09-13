@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Current from '../components/Current';
 import Forecast from '../components/Forecast/Forecast';
 import Header from '../components/Header';
-// import getWeatherData from '../service/getWeatherData';
-import axios from 'axios';
 import SearchBar from '../components/SearchBar/SearchBar';
+
+import css from './landingPage.module.scss';
 
 const imageUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
 
@@ -38,7 +39,7 @@ function LandingPage() {
     loading ? (
       <div> Loading </div>
     ) : (
-    <div>
+    <div className={css.landingpage }>
       <Header location={location} />
       <SearchBar updateLocation={updateLocation } />
       <div>

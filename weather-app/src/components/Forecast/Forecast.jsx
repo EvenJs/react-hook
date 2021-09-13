@@ -1,9 +1,10 @@
 import React from 'react';
 import DailyBlock from '../DailyBlock/DailyBlock';
+import css from './forecast.module.scss';
 
 function Forecast({ input, timeShift, baseURL }) {
   return(
-    <div>
+    <div className={css.forecast}>
       {input.map((data) => (
         <DailyBlock 
           week={data.time * 1000 + timeShift}
