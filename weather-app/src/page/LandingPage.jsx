@@ -11,9 +11,10 @@ const imageUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
 
 function LandingPage() {
   const [location, setLocation] = useState('Sydney');
-  const [weatherData, setWeatherData] = useState({});
+  //const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
   const [forecastData, setForecastData] = useState([]);
+  const [currentDetail, setCurrentDetail] = useState([]);
 
   const updateLocation = (text) => {
     const newlocation = text;
@@ -23,17 +24,19 @@ function LandingPage() {
   useEffect(() => {
     const getWeatherData = async() => {
       const {data} = await axios.get(`https://jr-weather-app-server.herokuapp.com/api/weather/${location}`)
-      console.log('1', data.data);
+      console.log('1', data.data.current.detail);
       const rawData = data.data;
     
-      setWeatherData(rawData);
+      //setWeatherData(rawData);
       setForecastData(rawData.daily)
       setLocation(rawData.city.name)
+      setCurrentDetail(rawData.current.detail)
+      // console.log( '2',rawData.current.detail)
     }
     getWeatherData(location);
     setLoading(false);
   },[location]);
-  console.log('111', weatherData)
+  // console.log('111', weatherData)
 
   return (
     loading ? (
@@ -43,7 +46,7 @@ function LandingPage() {
       <Header location={location} />
       <SearchBar updateLocation={updateLocation } />
       <div>
-        <Current imageUrl={imageUrl} />
+        <Current imageUrl={imageUrl} input={currentDetail} />
       </div>
       <Forecast input={forecastData} />
     </div>

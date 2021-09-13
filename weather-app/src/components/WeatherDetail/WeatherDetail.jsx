@@ -5,7 +5,7 @@ const getType = (type) => ({
   wind_speed: 'Wind Speed',
   sunrise: 'Sunrise Time',
   sunset:'Sunset Time',
-});
+}[type]);
 
 const getPrefix = (type) => ({
   humidity: '%',
