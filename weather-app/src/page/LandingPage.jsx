@@ -4,17 +4,18 @@ import Current from '../components/Current';
 import Forecast from '../components/Forecast/Forecast';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
-
 import css from './landingPage.module.scss';
 
-const imageUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
+const baseURL= 'https://openweathermap.org/img/wn/';
 
 function LandingPage() {
   const [location, setLocation] = useState('Sydney');
-  //const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
   const [forecastData, setForecastData] = useState([]);
   const [currentDetail, setCurrentDetail] = useState([]);
+  const [currentIcon,setCurrentIcon] = useState('');
+  const [currentWeather, serCurrentWeather] = useState('');
+  const [timeShift, setTimeShitf] = useState('');
 
   const updateLocation = (text) => {
     const newlocation = text;
@@ -23,20 +24,21 @@ function LandingPage() {
 
   useEffect(() => {
     const getWeatherData = async() => {
-      const {data} = await axios.get(`https://jr-weather-app-server.herokuapp.com/api/weather/${location}`)
-      console.log('1', data.data.current.detail);
+      const {data} = await axios.get(`https://jr-weather-app-server.herokuapp.com/api/weather/${location}`);
       const rawData = data.data;
     
-      //setWeatherData(rawData);
-      setForecastData(rawData.daily)
-      setLocation(rawData.city.name)
-      setCurrentDetail(rawData.current.detail)
-      // console.log( '2',rawData.current.detail)
-    }
+      setForecastData(rawData.daily);
+      setLocation(rawData.city.name);
+      setCurrentDetail(rawData.current.detail);
+      setCurrentIcon(rawData.current.weatheIcon);
+      serCurrentWeather(rawData.current.weather);
+      setTimeShitf(rawData.time.timeShift);
+      console.log('2', rawData);
+    };
+
     getWeatherData(location);
     setLoading(false);
   },[location]);
-  // console.log('111', weatherData)
 
   return (
     loading ? (
@@ -46,12 +48,21 @@ function LandingPage() {
       <Header location={location} />
       <SearchBar updateLocation={updateLocation } />
       <div>
-        <Current imageUrl={imageUrl} input={currentDetail} />
+        <Current
+          baseURL={baseURL}
+          iconId={currentIcon}
+          weather={currentWeather}
+          input={currentDetail}
+        />
       </div>
-      <Forecast input={forecastData} />
+      <Forecast 
+        input={forecastData}
+        timeShift={timeShift}
+        baseURL={baseURL}
+      />
     </div>
     )
   )
-}
+};
 
 export default LandingPage;

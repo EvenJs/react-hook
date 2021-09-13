@@ -7,15 +7,13 @@ function SearchBar({updateLocation}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!value) return;
-    //addTodo(value);
     updateLocation(value)
     setValue('');
   };
 
-
   return(
     <form className={css.searchbar} onSubmit={handleSubmit}>
-      <input 
+      <input
         type='text'
         className={css.input}
         value={value}
